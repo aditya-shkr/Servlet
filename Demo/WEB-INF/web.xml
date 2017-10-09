@@ -42,6 +42,26 @@
 	  	<servlet-name>Home</servlet-name>
 	  	<servlet-class>com.Kaldin.emp.servlet.HomeServlet</servlet-class>
 	  </servlet>
+	  <servlet>
+	  	<servlet-name>EmailCheck</servlet-name>
+	  	<servlet-class>com.Kaldin.emp.servlet.emailCheckServlet</servlet-class>
+	  </servlet>
+	  <servlet>
+	  	<servlet-name>AddFriend</servlet-name>
+	  	<servlet-class>com.Kaldin.emp.servlet.AddFriendServlet</servlet-class>
+	  </servlet>
+	  <servlet>
+	  	<servlet-name>CRUD</servlet-name>
+	  	<servlet-class>com.Kaldin.emp.servlet.CrudServlet</servlet-class>
+	  </servlet>
+	  <servlet>
+	  	<servlet-name>Import</servlet-name>
+	  	<servlet-class>com.Kaldin.emp.servlet.ImportServlet</servlet-class>
+	  </servlet>
+	  <servlet>
+	  	<servlet-name>Export</servlet-name>
+	  	<servlet-class>com.Kaldin.emp.servlet.ExportServlet</servlet-class>
+	  </servlet>
 	<servlet-mapping>
 		<servlet-name>Registration</servlet-name>
 		<url-pattern>/Registration</url-pattern>
@@ -58,5 +78,33 @@
 		<servlet-name>Home</servlet-name>
 		<url-pattern>/Home</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EmailCheck</servlet-name>
+		<url-pattern>/EmailCheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddFriend</servlet-name>
+		<url-pattern>/AddFriend</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CRUD</servlet-name>
+		<url-pattern>/CRUD</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Import</servlet-name>
+		<url-pattern>/Import</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Export</servlet-name>
+		<url-pattern>/Export</url-pattern>
+	</servlet-mapping>
+	
+	<context-param> 
+      <description>Location to store uploaded file</description> 
+      <param-name>uploadFile</param-name> 
+      <param-value>
+         /home/s5/Documents/files
+      </param-value> 
+   </context-param>
 	
 </web-app>

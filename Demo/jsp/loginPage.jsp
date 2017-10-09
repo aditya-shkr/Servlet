@@ -18,13 +18,16 @@
 			<label for="inputPassword" class="sr-only">Password</label> 
 			<input type="password" id="password" name="password" class="form-control" placeholder="Password" >
 			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
+				<label> <input type="checkbox" name="rememberMe" value="remember-me">
 					Remember me
 				</label>
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 				in</button>
+				<br>
+				<a href="../Registration">New User? Register Here..</a>
 		</form>
+		
 	</div>
 	<!-- /container -->
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -33,7 +36,7 @@
 	
 	<script>  
 		   $().ready(function() {
-		
+		var flag=0;
 				$("#signIn").validate({
 					rules: {
 						email: {
@@ -46,7 +49,13 @@
 						email: "Please enter a valid email address",
 						password: "Plese enter Password",
 					}
-				});				
+				});		
+				
+				
+				
+				
+				
+				
 		   });
 		</script>
 </body>

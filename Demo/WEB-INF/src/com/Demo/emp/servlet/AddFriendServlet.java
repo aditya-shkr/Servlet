@@ -6,20 +6,18 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Kaldin.emp.dbConnection.DbConnection;
 
-import javafx.scene.control.Alert;
 
 
 
-public class RegistrationServlet extends HttpServlet{ 
+public class AddFriendServlet extends HttpServlet{ 
 
 	/**
 	 * 
@@ -53,7 +51,13 @@ public class RegistrationServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		int flag=0;
+	
+		HttpSession ses=request.getSession();
+        String empId=(String)ses.getAttribute("empId");
+        
+//        System.out.print(empId);
+        
+		
 		String name=request.getParameter("name");	
 		String phone = request.getParameter("phone");
 		String email=request.getParameter("email");
@@ -61,31 +65,27 @@ public class RegistrationServlet extends HttpServlet{
 		String gen=request.getParameter("gen");
 		String mstatus=request.getParameter("maritalStatus");
 		String dob=request.getParameter("dob");
-		String skill=request.getParameter("chk1");
-		String password=request.getParameter("password");
-		
-		if(name==null){
+				
+		if(name==null||"".equals(name)){
 			name="empty";
-		}if(phone==null){
+		}if(phone==null||"".equals(phone)){
 			phone="0";
-		}if(email==null){
+		}if(email==null||"".equals(email)){
 			email="empty";
-		}if(address==null){
+		}if(address==null||"".equals(address)){
 			address="empty";
-		}if(gen==null){
+		}if(gen==null||"".equals(gen)){
 			gen="empty";
-		}if(mstatus==null){
+		}if(mstatus==null||"".equals(mstatus)){
 			mstatus="empty";
 		}
-		if(dob==null){
+		if(dob==null||"".equals(dob)){
 			dob="2011-08-19";
 		}
-		if(skill==null){
-			skill="empty";
+		if(empId==null||"".equals(empId)){
+			empId="0";
 		}
-		if(password==null){
-			password="empty";
-		}
+		
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date myDate = null;
 		try {
@@ -96,39 +96,25 @@ public class RegistrationServlet extends HttpServlet{
 		}
 		java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
 			
-		try{  String query1="select * from employee where email='"+email+"'";
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(query1);
-			while (rs.next()) {
+		
 
-				flag=1;
-				}
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-if(flag==1)
-{
-	response.sendRedirect("jsp/regPage.jsp");
-	}
 		try
-		{ if(flag==0)
-			{
-			String query="insert into employee(name,phone,email,address,gender,mstatus,dob,skill,password)"+"values(?,?,?,?,?,?,?,?,?)";
+		{
+			String query="insert into friend(empId,frName,frPhone,frEmail,frAddress,frGender,frMstatus,frDob)"+"values(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps=conn.prepareStatement(query);
-			ps.setString(1, name);
-			ps.setString(2, phone);
-			ps.setString(3, email);
-			ps.setString(4, address);
-			ps.setString(5, gen);
-			ps.setString(6, mstatus);
-			ps.setDate(7, sqlDate);
-			ps.setString(8, skill);
-			ps.setString(9, password);
+			ps.setString(1, empId);
+			ps.setString(2, name);
+			ps.setString(3, phone);
+			ps.setString(4, email);
+			ps.setString(5, address);
+			ps.setString(6, gen);
+			ps.setString(7, mstatus);
+			ps.setDate(8, sqlDate);
 			ps.executeUpdate();  
 			ps.close();
-			response.sendRedirect("jsp/loginPage.jsp"); 
-		}
+			response.sendRedirect("jsp/homePage.jsp"); 
+		
+		
 		}  
 		catch(Exception e)
 		{

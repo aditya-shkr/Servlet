@@ -37,3 +37,15 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.err{
+	margin-top:-27px;
+	margin-left:5px;
+}
+.outer{
+	width:auto 0;
+}
+.fw-container{
+	//position:relative;
+	max-width:1040px;
+	margin:0 auto;
+}

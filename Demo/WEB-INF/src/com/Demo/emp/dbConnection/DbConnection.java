@@ -10,7 +10,7 @@ public class DbConnection {
 		
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/empDb","root","");
-			   		
+//			System.out.println("Db connecteD");
 		return conn;
 		
 	
@@ -18,7 +18,7 @@ public class DbConnection {
 public static void closeCon(Connection con) throws SQLException{
 		
 		if(con==null){
-			System.out.print("con null");
+			System.out.println("con null");
 		}
 		else{
 		con.releaseSavepoint(null);
